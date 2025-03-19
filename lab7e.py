@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 # Student ID: mhamilton-edwards
 class Time:
-    """Simple object type for time of the day.
-       data attributes: hour, minute, second
-       function attributes: __init__, __str__, __repr__,
-                            time_to_sec, format_time,
-                            change_time, sum_times
-    """
+    """Simple object type for time of the day."""
     def __init__(self, hour=12, minute=0, second=0):
-        """constructor for time object"""
+        """Constructor for time object"""
         self.hour = hour
         self.minute = minute
         self.second = second
@@ -43,6 +38,14 @@ class Time:
         if self.minute >= 60 or self.second >= 60 or self.hour >= 24:
             return False
         return True
+
+    def __str__(self):
+        """Return a string representation for the object self."""
+        return f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
+
+    def __repr__(self):
+        """Return a string representation for the object self using '.' instead of ':'."""
+        return f'{self.hour:02d}.{self.minute:02d}.{self.second:02d}'
 
 def sec_to_time(seconds):
     '''Convert a given number of seconds to a time object in hour, minute, second format.'''

@@ -33,6 +33,27 @@ def sum_times(t1, t2):
 
     return sum_time
 
+def change_time(time, seconds):
+    time.second += seconds
+    if not valid_time(time):
+        while time.second < 0:  # Adjust seconds when they are negative
+            time.second += 60
+            time.minute -= 1
+        while time.second >= 60:  # Adjust seconds when they are over 60
+            time.second -= 60
+            time.minute += 1
+        while time.minute < 0:  # Adjust minutes when they are negative
+            time.minute += 60
+            time.hour -= 1
+        while time.minute >= 60:  # Adjust minutes when they are over 60
+            time.minute -= 60
+            time.hour += 1
+        while time.hour < 0:  # Adjust hours when they are negative
+            time.hour += 24
+        while time.hour >= 24:  # Adjust hours when they are over 24
+            time.hour -= 24
+    return None
+
 def valid_time(t):
     """Check for the validity of the time object attributes."""
     if t.hour < 0 or t.minute < 0 or t.second < 0:
@@ -40,3 +61,4 @@ def valid_time(t):
     if t.minute >= 60 or t.second >= 60 or t.hour >= 24:
         return False
     return True
+
